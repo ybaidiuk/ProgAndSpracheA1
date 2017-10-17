@@ -6,7 +6,6 @@ import com.entitys.Fahrzeug;
 import com.entitys.Lkw;
 import com.entitys.Pkw;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Set;
 

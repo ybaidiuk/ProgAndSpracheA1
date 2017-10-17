@@ -1,0 +1,20 @@
+
+1 write Test for SerializedFahrzeugDAO
+
+
+2 write Test for FahrzeugManagement
+
+
+3 write Test for Fahrzeug all geters
+
+
+4 write Test for Pkw getPreis getRabatt
+
+
+5 write Test for Lkw getPreis getRabatt
+
+
+6 write FahrzeugClient
+
+
+7 test all Functionality
