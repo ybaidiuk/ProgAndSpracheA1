@@ -1,10 +1,10 @@
 package com;
 
-import com.daos.FahrzeugDAO;
-import com.daos.SerializedFahrzeugDAO;
-import com.entitys.Lkw;
-import com.entitys.Pkw;
-import com.managers.FahrzeugManagement;
+import com.baidiuk.daos.FahrzeugDAO;
+import com.baidiuk.daos.SerializedFahrzeugDAO;
+import com.baidiuk.entitys.Lkw;
+import com.baidiuk.entitys.Pkw;
+import com.baidiuk.managers.FahrzeugManagement;
 import org.junit.Test;
 
 import java.io.File;
@@ -58,7 +58,7 @@ public class FahrzeugClientTest {
     }
 
     @Test
-    public void testGetById() { // get Fahrzeug mit  solche Id soll null zuruck lliefern!
+    public void testGetById() throws Exception { // get Fahrzeug mit  solche Id soll null zuruck lliefern!
         FahrzeugDAO fm = new SerializedFahrzeugDAO("Junit.ser");
         File file = new File("Junit.ser");
         file.delete();

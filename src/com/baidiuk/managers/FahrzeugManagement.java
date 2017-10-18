@@ -1,10 +1,10 @@
-package com.managers;
+package com.baidiuk.managers;
 
-import com.daos.FahrzeugDAO;
-import com.daos.SerializedFahrzeugDAO;
-import com.entitys.Fahrzeug;
-import com.entitys.Lkw;
-import com.entitys.Pkw;
+import com.baidiuk.daos.FahrzeugDAO;
+import com.baidiuk.daos.SerializedFahrzeugDAO;
+import com.baidiuk.entitys.Fahrzeug;
+import com.baidiuk.entitys.Lkw;
+import com.baidiuk.entitys.Pkw;
 
 import java.util.Comparator;
 import java.util.Set;
@@ -33,17 +33,30 @@ public class FahrzeugManagement {
      * Neues Fahrzeug hinzufügen
      */
     public void add(Fahrzeug f) {
-        dao.saveFahzeug(f);
+        try {
+            dao.saveFahzeug(f);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * Bestehendes Fahrzeug löschen
      */
     public void delete(Fahrzeug f) {
-        dao.deleteFahrzeug(f.getId());
+        try {
+            dao.deleteFahrzeug(f.getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
     public void delete(int id) {
-        dao.deleteFahrzeug(id);
+        try {
+            dao.deleteFahrzeug(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -96,11 +109,12 @@ public class FahrzeugManagement {
     }
 
     @Deprecated
-    public void clear(){// only for JunitTest
-        dao.getFahrzeugList().clear();
+    public void clear() {// only for JunitTest
+        dao.clear();
     }
+
     @Deprecated
-    public Set<Fahrzeug> getAll(){// only for JunitTest
+    public Set<Fahrzeug> getAll() {// only for JunitTest
         return dao.getFahrzeugList();
     }
 }

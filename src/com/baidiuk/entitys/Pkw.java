@@ -1,18 +1,27 @@
-package com.entitys;
+package com.baidiuk.entitys;
 
 /**
  * @author Baidiuk Yevhen
  * Matrikelnummer: 1368277
  */
 
-public class Lkw extends Fahrzeug {
+public class Pkw extends Fahrzeug {
 
     private static final long serialVersionUID = 1L;
+    private int servicejahr;
 
-    public Lkw(int id, String marke, String modell, int baujahr, double grundpreis) {
+    public Pkw(int id, String marke, String modell, int baujahr, double grundpreis) {
         super(id, marke, modell, baujahr, grundpreis);
     }
 
+    public int getServicejahr() {
+        return servicejahr;
+    }
+
+    public void setServicejahr(int servicejahr) {
+        // todo add to subClass "Error: Servicejahr ungueltig."  nicht in der Zukunft
+        this.servicejahr = servicejahr;
+    }
 
     @Override
     public int getPreis() {
@@ -26,14 +35,16 @@ public class Lkw extends Fahrzeug {
         return 0;
     }
 
+
     @Override
     public String toString() {
-        return "Lkw{" +
+        return "Pkw{" +
                 "id=" + getId() +
                 ", marke='" + getMarke() + '\'' +
                 ", modell='" + getModell() + '\'' +
                 ", baujahr=" + getBaujahr() +
                 ", grundpreis=" + getGrundpreis() +
+                ", servicejahr=" + getServicejahr() +
                 ", price=" + getPreis() +
                 '}';
     }

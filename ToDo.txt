@@ -1,5 +1,5 @@
 
-1 write Test for SerializedFahrzeugDAO
+1 write Test for SerializedFahrzeugDAO --> Done
 
 
 2 write Test for FahrzeugManagement

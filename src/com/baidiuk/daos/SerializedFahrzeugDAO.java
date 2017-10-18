@@ -1,6 +1,6 @@
-package com.daos;
+package com.baidiuk.daos;
 
-import com.entitys.Fahrzeug;
+import com.baidiuk.entitys.Fahrzeug;
 
 import java.io.*;
 import java.util.HashSet;
@@ -70,28 +70,28 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
     }
 
     @Override
-    public void saveFahzeug(Fahrzeug fahrzeug) {
-        if (fahrzeugSet.contains(fahrzeug)) try {
+    public void saveFahzeug(Fahrzeug fahrzeug) throws Exception {
+        if (fahrzeugSet.contains(fahrzeug))
             throw new Exception("Error: Fahrzeug bereits vorhanden. (id=<" + fahrzeug.getId() + ">)");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         fahrzeugSet.add(fahrzeug);
         saveData();
     }
 
     @Override
-    public void deleteFahrzeug(int id) {
+    public void deleteFahrzeug(int id) throws Exception {
         Fahrzeug fahrzeug = null;
         for (Fahrzeug f : fahrzeugSet)
             if (f.getId() == id)
                 fahrzeug = f;
-        if (fahrzeug == null) try {
+        if (fahrzeug == null)
             throw new Exception("Error: Fahrzeug nicht vorhanden. (id=<" + id + ">)");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         fahrzeugSet.remove(fahrzeug);
+        saveData();
+    }
+
+    @Override
+    public void clear() {
+        fahrzeugSet.clear();
         saveData();
     }
 }

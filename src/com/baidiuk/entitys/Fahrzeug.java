@@ -1,4 +1,4 @@
-package com.entitys;
+package com.baidiuk.entitys;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
