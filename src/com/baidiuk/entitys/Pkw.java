@@ -24,17 +24,15 @@ public class Pkw extends Fahrzeug {
     }
 
     @Override
-    public int getPreis() {
-        // todo
-        return 0;
+    public double getRabatt() {
+        double rabbatProzent = getAlter() * 0.05 + (currentYear - servicejahr) * 0.02;
+        double price = getGrundpreis() * (1 - rabbatProzent);
+        double minPrice = getGrundpreis() * 0.75;
+        if (price < minPrice)
+            return minPrice;
+        else
+            return price;
     }
-
-    @Override
-    public int getRabatt() {
-        // todo
-        return 0;
-    }
-
 
     @Override
     public String toString() {
@@ -43,7 +41,7 @@ public class Pkw extends Fahrzeug {
                 ", marke='" + getMarke() + '\'' +
                 ", modell='" + getModell() + '\'' +
                 ", baujahr=" + getBaujahr() +
-                ", grundpreis=" + getGrundpreis() +
+                ", grundpreis=" + df.format(getGrundpreis()) +
                 ", servicejahr=" + getServicejahr() +
                 ", price=" + getPreis() +
                 '}';

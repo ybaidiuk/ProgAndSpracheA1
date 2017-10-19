@@ -3,6 +3,7 @@ package com.baidiuk.entitys;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.Calendar;
 
 /**
  * @author Baidiuk Yevhen
@@ -12,7 +13,8 @@ import java.text.DecimalFormatSymbols;
 public abstract class Fahrzeug implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    public static DecimalFormat df = getDecimalFormat();
+    public int currentYear = Calendar.getInstance().get(Calendar.YEAR);
     private int id;
     private String marke;
     private String modell;
@@ -52,11 +54,16 @@ public abstract class Fahrzeug implements Serializable {
     }
 
     public int getBaujahr() {
-//   todo     "Error: Baujahr ungueltig."  nicht in der Zukunft
         return baujahr;
     }
 
     public void setBaujahr(int baujahr) {
+        if (baujahr > currentYear)
+            try {
+                throw new Exception("Error: Baujahr ungueltig.");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         this.baujahr = baujahr;
     }
 
@@ -65,18 +72,24 @@ public abstract class Fahrzeug implements Serializable {
     }
 
     public void setGrundpreis(double grundpreis) {
-        //        •todo "Error: Grundpreis ungueltig."
+        if (grundpreis <= 0) try {
+            throw new Exception("Error: Grundpreis ungueltig.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         this.grundpreis = grundpreis;
     }
 
     public int getAlter() {
-        //todo
-        return 0;
+        return currentYear - baujahr;
     }
 
-    abstract int getPreis();
+    double getPreis() {
+        return getGrundpreis() - getRabatt();
+    }
 
-    abstract int getRabatt();
+    abstract double getRabatt();
 
     public static DecimalFormat getDecimalFormat() {
         DecimalFormatSymbols dfs = DecimalFormatSymbols.getInstance();
@@ -106,7 +119,7 @@ public abstract class Fahrzeug implements Serializable {
                 ", marke='" + marke + '\'' +
                 ", modell='" + modell + '\'' +
                 ", baujahr=" + baujahr +
-                ", grundpreis=" + grundpreis +
+                ", grundpreis=" + df.format(grundpreis) +
                 '}';
     }
 }

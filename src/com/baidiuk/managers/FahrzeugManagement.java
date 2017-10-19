@@ -81,11 +81,11 @@ public class FahrzeugManagement {
     /**
      * Durchschnittspreis aller Fahrzeuge ermitteln
      */
-    public int priceAvg() {
-        int counter = 0;
+    public String priceAvg() {
+        double counter = 0;
         for (Fahrzeug f : dao.getFahrzeugList())
             counter += f.getGrundpreis();
-        return counter / dao.getFahrzeugList().size();
+        return Fahrzeug.df.format(counter / dao.getFahrzeugList().size());
     }
 
     /**
@@ -96,7 +96,7 @@ public class FahrzeugManagement {
             System.err.println("You have no Fahrzeug!");
             System.exit(1);
         }
-        Fahrzeug smalerste = dao.getFahrzeugList().stream().sorted(Comparator.comparingInt(Fahrzeug::getAlter)).findFirst().get();
+        Fahrzeug smalerste = dao.getFahrzeugList().stream().sorted(Comparator.comparingInt(Fahrzeug::getAlter).reversed()).findFirst().get();
         return smalerste.getId();
     }
 

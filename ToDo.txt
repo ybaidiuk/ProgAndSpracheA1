@@ -2,17 +2,14 @@
 1 write Test for SerializedFahrzeugDAO --> Done
 
 
-2 write Test for FahrzeugManagement
+2 write Test for FahrzeugManagement --> Done
 
 
-3 write Test for Fahrzeug all geters
+3 write Test for Fahrzeug all geters --> Done
 
+4 write Test for Lkw getPreis getRabatt get ServiceJart bla bla
 
-4 write Test for Pkw getPreis getRabatt
-
-
-5 write Test for Lkw getPreis getRabatt
-
+5 write Test for Pkw getPreis getRabatt
 
 6 write FahrzeugClient
 

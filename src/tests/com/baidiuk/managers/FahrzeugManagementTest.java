@@ -13,8 +13,8 @@ import static org.junit.Assert.*;
 
 public class FahrzeugManagementTest {
     private static final String filePaht = "testManag";
-    private Fahrzeug fahrzeug1 = new Lkw(1, "testManag", "testManagModel", 1992, 100);
-    private Fahrzeug fahrzeug2 = new Pkw(2, "testManag2Lkw", "testManagModel2", 2000, 200);
+    private Fahrzeug fahrzeug1 = new Lkw(1, "testManag", "testManagModel", 1992, 100.10);
+    private Fahrzeug fahrzeug2 = new Pkw(2, "testManag2Lkw", "testManagModel2", 2000, 200.20);
 
     private FahrzeugManagement fm = new FahrzeugManagement(filePaht);
 
@@ -31,11 +31,6 @@ public class FahrzeugManagementTest {
     public static void tearDownClass() {
         File file = new File(filePaht);
         file.delete();
-    }
-
-    @Test
-    public void print() throws Exception {
-        fm.print(fahrzeug1);
     }
 
     @Test
@@ -66,9 +61,8 @@ public class FahrzeugManagementTest {
 
     @Test
     public void priceAvg() throws Exception {//todo Check aufgabe
-        System.out.println(fahrzeug1.getGrundpreis());
         System.out.println(fm.priceAvg());
-        assertEquals(150, fm.priceAvg());
+        assertEquals("150.15", fm.priceAvg());
     }
 
     @Test

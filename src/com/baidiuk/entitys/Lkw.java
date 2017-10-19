@@ -13,17 +13,15 @@ public class Lkw extends Fahrzeug {
         super(id, marke, modell, baujahr, grundpreis);
     }
 
-
     @Override
-    public int getPreis() {
-        // todo
-        return 0;
-    }
-
-    @Override
-    public int getRabatt() {
-        // todo
-        return 0;
+    public double getRabatt() {
+        double rabbatProzent = getAlter() * 0.05;
+        double price = getGrundpreis() * (1 - rabbatProzent);
+        double minPrice = getGrundpreis() * 0.80;
+        if (price < minPrice)
+            return minPrice;
+        else
+            return price;
     }
 
     @Override
@@ -33,7 +31,7 @@ public class Lkw extends Fahrzeug {
                 ", marke='" + getMarke() + '\'' +
                 ", modell='" + getModell() + '\'' +
                 ", baujahr=" + getBaujahr() +
-                ", grundpreis=" + getGrundpreis() +
+                ", grundpreis=" + df.format(getGrundpreis()) +
                 ", price=" + getPreis() +
                 '}';
     }
