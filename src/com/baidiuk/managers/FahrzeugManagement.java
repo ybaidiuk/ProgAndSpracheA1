@@ -51,14 +51,6 @@ public class FahrzeugManagement {
         }
     }
 
-    public void delete(int id) {
-        try {
-            dao.deleteFahrzeug(id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     /**
      * Gesamtzahl aller Fahrzeuge ermitteln
      */
@@ -87,7 +79,7 @@ public class FahrzeugManagement {
     }
 
     /**
-     * Gesamtzahl aller LKWs ermitteln
+     * Durchschnittspreis aller Fahrzeuge ermitteln
      */
     public int priceAvg() {
         int counter = 0;

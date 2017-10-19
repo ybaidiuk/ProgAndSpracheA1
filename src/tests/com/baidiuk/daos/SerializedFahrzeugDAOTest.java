@@ -2,7 +2,6 @@ package com.baidiuk.daos;
 
 import com.baidiuk.entitys.Fahrzeug;
 import com.baidiuk.entitys.Lkw;
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
