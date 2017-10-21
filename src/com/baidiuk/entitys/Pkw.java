@@ -10,28 +10,27 @@ public class Pkw extends Fahrzeug {
     private static final long serialVersionUID = 1L;
     private int servicejahr;
 
-    public Pkw(int id, String marke, String modell, int baujahr, double grundpreis) {
+    public Pkw(int id, String marke, String modell, int baujahr, double grundpreis, int servicejahr) throws Exception {
         super(id, marke, modell, baujahr, grundpreis);
+        setServicejahr(servicejahr);
     }
 
     public int getServicejahr() {
         return servicejahr;
     }
 
-    public void setServicejahr(int servicejahr) {
-        // todo add to subClass "Error: Servicejahr ungueltig."  nicht in der Zukunft
+    public void setServicejahr(int servicejahr) throws Exception {
+        if (servicejahr < getBaujahr() || servicejahr > currentYear)
+            throw new Exception("Error: ServiceJahr ungueltig.");
         this.servicejahr = servicejahr;
     }
 
     @Override
     public double getRabatt() {
         double rabbatProzent = getAlter() * 0.05 + (currentYear - servicejahr) * 0.02;
-        double price = getGrundpreis() * (1 - rabbatProzent);
-        double minPrice = getGrundpreis() * 0.75;
-        if (price < minPrice)
-            return minPrice;
-        else
-            return price;
+        double rabatt = getGrundpreis() * rabbatProzent;
+        double maxRabatt = getGrundpreis() * 0.15;
+        return rabatt > maxRabatt ? maxRabatt : rabatt;
     }
 
     @Override

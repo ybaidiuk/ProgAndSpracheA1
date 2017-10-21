@@ -13,8 +13,8 @@ import static org.junit.Assert.*;
 
 public class FahrzeugManagementTest {
     private static final String filePaht = "testManag";
-    private Fahrzeug fahrzeug1 = new Lkw(1, "testManag", "testManagModel", 1992, 100.10);
-    private Fahrzeug fahrzeug2 = new Pkw(2, "testManag2Lkw", "testManagModel2", 2000, 200.20);
+    private Fahrzeug fahrzeug1;
+    private Fahrzeug fahrzeug2;
 
     private FahrzeugManagement fm = new FahrzeugManagement(filePaht);
 
@@ -22,6 +22,9 @@ public class FahrzeugManagementTest {
     @Before
     public void setUp() throws Exception {
         fm.clear();
+        fahrzeug1 = new Lkw(1, "testManag", "testManagModel", 1992, 100.10);
+        fahrzeug2 = new Pkw(2, "testManag2Lkw", "testManagModel2", 2000, 200.20, 2002);
+
         fm.add(fahrzeug1);
         fm.add(fahrzeug2);
     }

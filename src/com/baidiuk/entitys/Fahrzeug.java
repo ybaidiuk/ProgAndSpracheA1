@@ -14,14 +14,14 @@ public abstract class Fahrzeug implements Serializable {
 
     private static final long serialVersionUID = 1L;
     public static DecimalFormat df = getDecimalFormat();
-    public int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    public static int currentYear = Calendar.getInstance().get(Calendar.YEAR);
     private int id;
     private String marke;
     private String modell;
     private int baujahr;
     private double grundpreis;
 
-    public Fahrzeug(int id, String marke, String modell, int baujahr, double grundpreis) {
+    public Fahrzeug(int id, String marke, String modell, int baujahr, double grundpreis) throws Exception {
         setId(id);
         setMarke(marke);
         setModell(modell);
@@ -57,13 +57,8 @@ public abstract class Fahrzeug implements Serializable {
         return baujahr;
     }
 
-    public void setBaujahr(int baujahr) {
-        if (baujahr > currentYear)
-            try {
-                throw new Exception("Error: Baujahr ungueltig.");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+    public void setBaujahr(int baujahr) throws Exception {
+        if (baujahr > currentYear) throw new Exception("Error: Baujahr ungueltig.");
         this.baujahr = baujahr;
     }
 
@@ -71,13 +66,8 @@ public abstract class Fahrzeug implements Serializable {
         return grundpreis;
     }
 
-    public void setGrundpreis(double grundpreis) {
-        if (grundpreis <= 0) try {
-            throw new Exception("Error: Grundpreis ungueltig.");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    public void setGrundpreis(double grundpreis) throws Exception {
+        if (grundpreis <= 0) throw new Exception("Error: Grundpreis ungueltig.");
         this.grundpreis = grundpreis;
     }
 

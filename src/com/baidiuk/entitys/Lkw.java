@@ -9,7 +9,7 @@ public class Lkw extends Fahrzeug {
 
     private static final long serialVersionUID = 1L;
 
-    public Lkw(int id, String marke, String modell, int baujahr, double grundpreis) {
+    public Lkw(int id, String marke, String modell, int baujahr, double grundpreis) throws Exception {
         super(id, marke, modell, baujahr, grundpreis);
     }
 
@@ -18,10 +18,8 @@ public class Lkw extends Fahrzeug {
         double rabbatProzent = getAlter() * 0.05;
         double price = getGrundpreis() * (1 - rabbatProzent);
         double minPrice = getGrundpreis() * 0.80;
-        if (price < minPrice)
-            return minPrice;
-        else
-            return price;
+        return price < minPrice ? minPrice : price;
+
     }
 
     @Override
