@@ -63,7 +63,7 @@ public class FahrzeugManagementTest {
     }
 
     @Test
-    public void priceAvg() throws Exception {//todo Check aufgabe
+    public void priceAvg() throws Exception {
         System.out.println(fm.priceAvg());
         assertEquals("150.15", fm.priceAvg());
     }
