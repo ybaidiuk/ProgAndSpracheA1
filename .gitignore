@@ -1,4 +1,3 @@
-#.gitignore
-#.idea/
-#out/
-#progSpracheKonseptA1.iml
+.idea/
+out/
+progSpracheKonseptA1.iml
