@@ -16,9 +16,9 @@ public class Lkw extends Fahrzeug {
     @Override
     public double getRabatt() {
         double rabbatProzent = getAlter() * 0.05;
-        double price = getGrundpreis() * (1 - rabbatProzent);
-        double minPrice = getGrundpreis() * 0.80;
-        return price < minPrice ? minPrice : price;
+        double rabbat = getGrundpreis() * rabbatProzent;
+        double maxRabbat = getGrundpreis() * 0.2;
+        return rabbat > maxRabbat ? maxRabbat : rabbat;
 
     }
 
