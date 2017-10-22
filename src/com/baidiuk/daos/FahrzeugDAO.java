@@ -15,9 +15,9 @@ public interface FahrzeugDAO {
 
     Fahrzeug getFahrzeugbyId(int id);
 
-    void saveFahzeug(Fahrzeug fahrzeug) throws Exception;
+    void speichereFahrzeug(Fahrzeug fahrzeug) throws Exception;
 
-    void deleteFahrzeug(int id) throws Exception;
+    void loescheFahrzeug(int id) throws Exception;
 
     @Deprecated
     void clear();

@@ -34,7 +34,7 @@ public class FahrzeugManagement {
      */
     public void add(Fahrzeug f) {
         try {
-            dao.saveFahzeug(f);
+            dao.speichereFahrzeug(f);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,7 +45,7 @@ public class FahrzeugManagement {
      */
     public void delete(Fahrzeug f) {
         try {
-            dao.deleteFahrzeug(f.getId());
+            dao.loescheFahrzeug(f.getId());
         } catch (Exception e) {
             e.printStackTrace();
         }

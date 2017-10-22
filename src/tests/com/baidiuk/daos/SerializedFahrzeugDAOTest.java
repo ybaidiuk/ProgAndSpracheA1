@@ -24,8 +24,8 @@ public class SerializedFahrzeugDAOTest {
 
         fahrzeug1 = new Lkw(1, "testSer", "testSerModel", 1992, 100);
         fahrzeug2 = new Lkw(2, "testSer2", "testSerModel2", 1992, 100);
-        dao.saveFahzeug(fahrzeug1);
-        dao.saveFahzeug(fahrzeug2);
+        dao.speichereFahrzeug(fahrzeug1);
+        dao.speichereFahrzeug(fahrzeug2);
     }
 
 
@@ -49,7 +49,7 @@ public class SerializedFahrzeugDAOTest {
     @Test
     public void saveFahzeug() throws Exception {
         dao.clear();
-        dao.saveFahzeug(fahrzeug1);
+        dao.speichereFahrzeug(fahrzeug1);
         assertEquals(1, dao.getFahrzeugbyId(fahrzeug1.getId()).getId());
     }
 
@@ -60,20 +60,20 @@ public class SerializedFahrzeugDAOTest {
 
     @Test(expected = Exception.class)
     public void saveFahzeugExeption() throws Exception {
-        dao.saveFahzeug(fahrzeug1);
+        dao.speichereFahrzeug(fahrzeug1);
     }
 
 
     @Test
     public void deleteFahrzeug() throws Exception {
-        dao.deleteFahrzeug(fahrzeug1.getId());
-        dao.deleteFahrzeug(fahrzeug2.getId());
+        dao.loescheFahrzeug(fahrzeug1.getId());
+        dao.loescheFahrzeug(fahrzeug2.getId());
         assertTrue(dao.getFahrzeugList().isEmpty());
     }
 
     @Test(expected = Exception.class)
     public void deleteFahrzeugExeption() throws Exception {
-        dao.deleteFahrzeug(0);
+        dao.loescheFahrzeug(0);
     }
 
 }

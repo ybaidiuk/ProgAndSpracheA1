@@ -70,7 +70,7 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
     }
 
     @Override
-    public void saveFahzeug(Fahrzeug fahrzeug) throws Exception {
+    public void speichereFahrzeug(Fahrzeug fahrzeug) throws Exception {
         if (fahrzeugSet.contains(fahrzeug))
             throw new Exception("Error: Fahrzeug bereits vorhanden. (id=<" + fahrzeug.getId() + ">)");
         fahrzeugSet.add(fahrzeug);
@@ -78,7 +78,7 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
     }
 
     @Override
-    public void deleteFahrzeug(int id) throws Exception {
+    public void loescheFahrzeug(int id) throws Exception {
         Fahrzeug fahrzeug = null;
         for (Fahrzeug f : fahrzeugSet)
             if (f.getId() == id)
