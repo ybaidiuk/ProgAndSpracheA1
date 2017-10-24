@@ -29,6 +29,10 @@ public abstract class Fahrzeug implements Serializable {
         setGrundpreis(grundpreis);
     }
 
+    abstract double getRabatt();
+
+    abstract public String toString();
+
     public int getId() {
         return id;
     }
@@ -79,7 +83,6 @@ public abstract class Fahrzeug implements Serializable {
         return getGrundpreis() - getRabatt();
     }
 
-    abstract double getRabatt();
 
     public static DecimalFormat getDecimalFormat() {
         DecimalFormatSymbols dfs = DecimalFormatSymbols.getInstance();
@@ -102,14 +105,4 @@ public abstract class Fahrzeug implements Serializable {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return "Fahrzeug{" +
-                "id=" + id +
-                ", marke='" + marke + '\'' +
-                ", modell='" + modell + '\'' +
-                ", baujahr=" + baujahr +
-                ", grundpreis=" + df.format(grundpreis) +
-                '}';
-    }
 }
