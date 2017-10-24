@@ -7,11 +7,10 @@
 
 3 write Test for Fahrzeug all geters --> Done
 
-4 write Test for Lkw getPreis getRabatt get ServiceJart bla bla
+4 write Test for Lkw getPreis getRabatt get ServiceJart bla bla ----> Done
 
-5 write Test for Pkw getPreis getRabatt
+5 write Test for Pkw getPreis getRabatt  ----> Done
 
 6 write FahrzeugClient
-
 
 7 test all Functionality
