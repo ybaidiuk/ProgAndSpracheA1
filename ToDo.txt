@@ -11,6 +11,8 @@
 
 5 write Test for Pkw getPreis getRabatt  ----> Done
 
+5.1 Throw Exeption and Cach in main  e.massage.
+
 6 write FahrzeugClient
 
 7 test all Functionality
