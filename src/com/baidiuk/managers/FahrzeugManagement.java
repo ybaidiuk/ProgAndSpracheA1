@@ -22,6 +22,16 @@ public class FahrzeugManagement {
         dao = new SerializedFahrzeugDAO(filePath);
     }
 
+
+    /**
+     * Alle Daten aller Fahrzeuge bereitstellen
+     */
+    public void printAll() {
+        Set<Fahrzeug> fahrzeugSet = dao.getFahrzeugList();
+        for (Fahrzeug f : fahrzeugSet) System.out.println(f);
+
+    }
+
     /**
      * Alle Daten eines Fahrzeugs bereitstellen
      */
