@@ -20,6 +20,8 @@ public class FahrzeugClient {
     public static void main(String[] args) throws Exception {
         FahrzeugManagement fm = new FahrzeugManagement(args[0]);
 
+        //<Datei> add pkw 5 Tesla "Model S" 2016 65000 2016
+
 
         switch (args[1]) {
             case "show":
@@ -31,10 +33,10 @@ public class FahrzeugClient {
                 break;
 
             case "add":
-                if (args[2] == "pkw"){
+                if (args[2].equals("pkw")){
                     Pkw pkw = new Pkw(Integer.parseInt(args[3]),args[4],args[5],Integer.parseInt(args[6]),Double.parseDouble(args[7]),Integer.parseInt(args[8]));
                     fm.add(pkw);
-                }else if(args[2] == "lkw"){
+                }else if(args[2].equals("lkw")){
                     Lkw lkw = new Lkw(Integer.parseInt(args[3]),args[4],args[5],Integer.parseInt(args[6]),Double.parseDouble(args[7]));
                     fm.add(lkw);
                 }
@@ -43,8 +45,20 @@ public class FahrzeugClient {
                 fm.delete(Integer.parseInt(args[2]));
                 break;
             case "count":
-                if (args[2] == "pkw")fm.sizeOfPkw();
-                else if(args[2] == "lkw") fm.sizeOfLkw();
+                if (args[2] == "pkw") System.out.println(fm.sizeOfPkw());
+                else if(args[2] == "lkw") System.out.println(fm.sizeOfLkw());
+
+            case "meanprice"://Durchschnittspreis aller Fahrzeuge berechnen
+                if (args.length != 2)
+                    throw new IllegalArgumentException("Arguments ist Falsh!");
+                System.out.println(fm.priceAvg());
+                break;
+
+            case "oldest": //Ältest(e) Fahrzeug(e) suchen
+                if (args.length != 2)
+                    throw new IllegalArgumentException("Arguments ist Falsh!");
+                System.out.println(fm.getOldestFahrzeugId());
+                break;
         }
     }
 

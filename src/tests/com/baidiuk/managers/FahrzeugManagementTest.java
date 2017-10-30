@@ -43,7 +43,7 @@ public class FahrzeugManagementTest {
 
     @Test
     public void delete() throws Exception {
-        fm.delete(fahrzeug1);
+        fm.delete(1);
         assertEquals(1, fm.getAll().size());
     }
 

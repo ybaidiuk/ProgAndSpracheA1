@@ -105,7 +105,7 @@ public class FahrzeugManagement {
         if (dao.getFahrzeugList().isEmpty()) {
             System.err.println("You have no Fahrzeug!");
             System.exit(1);
-        }
+        }//todo if we have two equally old cars???
         Fahrzeug smalerste = dao.getFahrzeugList().stream().sorted(Comparator.comparingInt(Fahrzeug::getAlter).reversed()).findFirst().get();
         return smalerste.getId();
     }
