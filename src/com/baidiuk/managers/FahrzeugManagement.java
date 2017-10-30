@@ -35,8 +35,8 @@ public class FahrzeugManagement {
     /**
      * Alle Daten eines Fahrzeugs bereitstellen
      */
-    public void print(Fahrzeug f) {
-        System.out.println(f);
+    public void print(int i) {
+        System.out.println(dao.getFahrzeugbyId(i));
     }
 
     /**
@@ -53,9 +53,9 @@ public class FahrzeugManagement {
     /**
      * Bestehendes Fahrzeug löschen
      */
-    public void delete(Fahrzeug f) {
+    public void delete(int i) {
         try {
-            dao.loescheFahrzeug(f.getId());
+            dao.loescheFahrzeug(i);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,4 +119,5 @@ public class FahrzeugManagement {
     public Set<Fahrzeug> getAll() {// only for JunitTest
         return dao.getFahrzeugList();
     }
+
 }

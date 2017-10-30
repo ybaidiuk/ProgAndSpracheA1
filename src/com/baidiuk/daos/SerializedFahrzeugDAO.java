@@ -98,4 +98,12 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
         fahrzeugSet.clear();
         saveData();
     }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
 }
