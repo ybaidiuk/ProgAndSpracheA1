@@ -30,8 +30,9 @@ public class FahrzeugTest {
 
     @Test
     public void getGrundpreis() throws Exception {
-        assertTrue(fahrzeug1.toString().contains("grundpreis=100.89"));
-        assertTrue(fahrzeug2.toString().contains("grundpreis=100.00"));
+
+        assertTrue(fahrzeug1.toString().contains("Grundpreis: 100.89"));
+        assertTrue(fahrzeug2.toString().contains("Grundpreis: 100.00"));
     }
 
     @Test(expected = Exception.class)
