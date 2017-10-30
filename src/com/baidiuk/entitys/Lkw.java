@@ -24,13 +24,12 @@ public class Lkw extends Fahrzeug {
 
     @Override
     public String toString() {
-        return "Lkw{" +
-                "id=" + getId() +
-                ", marke='" + getMarke() + '\'' +
-                ", modell='" + getModell() + '\'' +
-                ", baujahr=" + getBaujahr() +
-                ", grundpreis=" + df.format(getGrundpreis()) +
-                ", price=" + getPreis() +
-                '}';
+        return "Typ: LKW \n" +
+                "Id: " + getId() + "\n"+
+                "Marke: " + getMarke() + '\n' +
+                "Modell: " + getModell() + '\n' +
+                "Baujahr: " + getBaujahr() +"\n"+
+                "Grundpreis: " + df.format(getGrundpreis()) + "\n"+
+                "Price: " + getPreis() + "\n";
     }
 }

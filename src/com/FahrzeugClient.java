@@ -25,14 +25,16 @@ public class FahrzeugClient {
 
         switch (args[1]) {
             case "show":
-                if (args.length == 2) {
+                if (args.length > 3) throw new IllegalArgumentException("Arguments ist Falsh!");
+                else if (args.length == 2) {
                     fm.printAll();
                 } else if (args.length == 3)
                     fm.print(Integer.parseInt(args[2]));
-                else if (args.length > 3) throw new IllegalArgumentException("Arguments ist Falsh!");
                 break;
 
             case "add":
+                if (args.length != 9 && args.length != 8) throw new IllegalArgumentException("Arguments ist Falsh!");
+
                 if (args[2].equals("pkw")){
                     Pkw pkw = new Pkw(Integer.parseInt(args[3]),args[4],args[5],Integer.parseInt(args[6]),Double.parseDouble(args[7]),Integer.parseInt(args[8]));
                     fm.add(pkw);
@@ -61,5 +63,4 @@ public class FahrzeugClient {
                 break;
         }
     }
-
 }

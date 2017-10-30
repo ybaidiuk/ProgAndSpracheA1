@@ -9,7 +9,6 @@ public class Pkw extends Fahrzeug {
 
     private static final long serialVersionUID = 1L;
     private int servicejahr;
-//<Datei> add pkw   5         Tesla      "Model S"         2016              65000             2016
     public Pkw(int id, String marke, String modell, int baujahr, double grundpreis, int servicejahr) throws Exception {
         super(id, marke, modell, baujahr, grundpreis);
         setServicejahr(servicejahr);
@@ -35,14 +34,13 @@ public class Pkw extends Fahrzeug {
 
     @Override
     public String toString() {
-        return "Pkw{" +
-                "id=" + getId() +
-                ", marke='" + getMarke() + '\'' +
-                ", modell='" + getModell() + '\'' +
-                ", baujahr=" + getBaujahr() +
-                ", grundpreis=" + df.format(getGrundpreis()) +
-                ", servicejahr=" + getServicejahr() +
-                ", price=" + getPreis() +
-                '}';
+        return "Typ: PKW \n" +
+                "Id: " + getId() + "\n"+
+                "Marke: " + getMarke() + '\n' +
+                "Modell: " + getModell() + '\n' +
+                "Baujahr: " + getBaujahr() +"\n"+
+                "Grundpreis: " + df.format(getGrundpreis()) + "\n"+
+                "Servicejahr: " + getServicejahr() + "\n"+
+                "Price: " + getPreis() + "\n";
     }
 }
