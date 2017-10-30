@@ -28,6 +28,8 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
                 ObjectInputStream os = new ObjectInputStream(fileInputStream);
                 fahrzeugSet = (HashSet<Fahrzeug>) os.readObject();
                 os.close();
+                fileInputStream.close();
+                System.out.println("Deserialisierung erfolgreich");
             } catch (Exception e) {
                 System.err.println("Fehler bei Deserialisierung:");
                 e.printStackTrace();
@@ -49,6 +51,8 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
             ObjectOutputStream os = new ObjectOutputStream(fileOutputStream);
             os.writeObject(fahrzeugSet);
             os.close();
+            fileOutputStream.close();
+            System.out.println("Serialisierung erfolgreich");
         } catch (Exception e) {
             System.err.println("Fehler bei Serialisierung:");
             e.printStackTrace();
