@@ -6,7 +6,9 @@ import com.baidiuk.entitys.Fahrzeug;
 import com.baidiuk.entitys.Lkw;
 import com.baidiuk.entitys.Pkw;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -101,13 +103,19 @@ public class FahrzeugManagement {
     /**
      * Id(s) des(r) ältesten Fahrzeugs(e) ermitteln
      */
-    public int getOldestFahrzeugId() {
+    public List<Integer> getOldestFahrzeugId() {
         if (dao.getFahrzeugList().isEmpty()) {
             System.err.println("You have no Fahrzeug!");
             System.exit(1);
-        }//todo if we have two equally old cars???
-        Fahrzeug smalerste = dao.getFahrzeugList().stream().sorted(Comparator.comparingInt(Fahrzeug::getAlter).reversed()).findFirst().get();
-        return smalerste.getId();
+        }
+        List<Integer> retList = new ArrayList<>();
+        int ageOfOldest = dao.getFahrzeugList().stream().sorted(Comparator.comparingInt(Fahrzeug::getAlter).reversed()).findFirst().get().getAlter();
+
+        for (Fahrzeug f : dao.getFahrzeugList()){
+            if (f.getAlter() == ageOfOldest)
+                retList.add(f.getId());
+        }
+        return retList;
     }
 
     @Deprecated

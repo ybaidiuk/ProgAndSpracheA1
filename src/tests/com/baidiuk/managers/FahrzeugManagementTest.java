@@ -70,7 +70,7 @@ public class FahrzeugManagementTest {
 
     @Test
     public void getOldestFahrzeugId() throws Exception {
-        assertEquals(fahrzeug1.getId(), fm.getOldestFahrzeugId());
+        assertEquals(new Integer(fahrzeug1.getId()), fm.getOldestFahrzeugId().get(0));
     }
 
     @Test

@@ -11,7 +11,9 @@
 
 5 write Test for Pkw getPreis getRabatt  ----> Done
 
-5.1 Throw Exeption and Cach in main  e.massage.
+5.1 Throw Exeption and Cach in main  e.massage. тобто стерти з мейну  сровабл і веь мейн взяти в трай кеч  . в кечі видати cerr( e.massage)
+
+5.2 витягнути все з пакетів в src
 
 6 write FahrzeugClient
 
