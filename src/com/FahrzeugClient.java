@@ -61,7 +61,6 @@ public class FahrzeugClient {
             }
         } catch (IndexOutOfBoundsException e) {
             System.err.println("Parameter Fehlt");
-            System.exit(1);
         }
     }
 }
