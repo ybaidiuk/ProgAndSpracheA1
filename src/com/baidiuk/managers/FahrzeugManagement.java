@@ -93,11 +93,13 @@ public class FahrzeugManagement {
     /**
      * Durchschnittspreis aller Fahrzeuge ermitteln
      */
-    public String priceAvg() {
+    public double priceAvg() {
+        double meanprice;
         double counter = 0;
         for (Fahrzeug f : dao.getFahrzeugList())
             counter += f.getGrundpreis();
-        return Fahrzeug.df.format(counter / dao.getFahrzeugList().size());
+        meanprice = counter / dao.getFahrzeugList().size();
+        return meanprice;
     }
 
     /**

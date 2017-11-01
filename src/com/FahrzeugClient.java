@@ -43,7 +43,7 @@ public class FahrzeugClient {
                     fm.delete(Integer.parseInt(args[2]));
                     break;
                 case "count":
-                    if (args[2] == "pkw") System.out.println(fm.sizeOfPkw());
+                    if (args[2].equals("pkw")) System.out.println(fm.sizeOfPkw());
                     else if (args[2] == "lkw") System.out.println(fm.sizeOfLkw());
                     break;
 
