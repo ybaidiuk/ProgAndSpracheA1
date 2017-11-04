@@ -9,7 +9,7 @@ public class Lkw extends Fahrzeug {
 
     private static final long serialVersionUID = 1L;
 
-    public Lkw(int id, String marke, String modell, int baujahr, double grundpreis) throws Exception {
+    public Lkw(String id, String marke, String modell, String baujahr, String grundpreis) throws Exception {
         super(id, marke, modell, baujahr, grundpreis);
     }
 
@@ -24,12 +24,12 @@ public class Lkw extends Fahrzeug {
 
     @Override
     public String toString() {
-        return "Typ: LKW \n" +
-                "Id: " + getId() + "\n"+
-                "Marke: " + getMarke() + '\n' +
-                "Modell: " + getModell() + '\n' +
-                "Baujahr: " + getBaujahr() +"\n"+
-                "Grundpreis: " + df.format(getGrundpreis()) + "\n"+
-                "Price: " + getPreis() + "\n";
+        return "Typ:           LKW\n" +
+                "Id:            " + getId() + "\n"+
+                "Marke:         " + getMarke() + '\n' +
+                "Modell:        " + getModell() + '\n' +
+                "Baujahr:       " + getBaujahr() +"\n"+
+                "Grundpreis:    " + df.format(getGrundpreis()) + "\n"+
+                "Price:         " + getPreis() + "\n";
     }
 }

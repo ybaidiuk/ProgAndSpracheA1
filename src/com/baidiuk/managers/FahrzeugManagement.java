@@ -6,6 +6,8 @@ import com.baidiuk.entitys.Fahrzeug;
 import com.baidiuk.entitys.Lkw;
 import com.baidiuk.entitys.Pkw;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -93,13 +95,13 @@ public class FahrzeugManagement {
     /**
      * Durchschnittspreis aller Fahrzeuge ermitteln
      */
-    public double priceAvg() {
+    public String priceAvg() {
         double meanprice;
         double counter = 0;
         for (Fahrzeug f : dao.getFahrzeugList())
             counter += f.getGrundpreis();
         meanprice = counter / dao.getFahrzeugList().size();
-        return meanprice;
+        return Fahrzeug.df.format(meanprice);
     }
 
     /**

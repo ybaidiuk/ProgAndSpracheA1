@@ -1,5 +1,6 @@
 package com;
 
+import com.baidiuk.entitys.Fahrzeug;
 import com.baidiuk.entitys.Lkw;
 import com.baidiuk.entitys.Pkw;
 import com.baidiuk.managers.FahrzeugManagement;
@@ -14,53 +15,75 @@ import com.baidiuk.managers.FahrzeugManagement;
 
 public class FahrzeugClient {
     public static void main(String[] args) throws Exception {
-        FahrzeugManagement fm = new FahrzeugManagement(args[0]);
-
         try {
+            FahrzeugManagement fm = new FahrzeugManagement(args[0]);
+            Fahrzeug f;
             switch (args[1]) {
+
+//----------------------------------------------------------------------
                 case "show":
-                    if (args.length > 3) throw new IllegalArgumentException("Arguments ist Falsh!");
-                    else if (args.length == 2) {
-                        fm.printAll();
-                    } else if (args.length == 3)
-                        fm.print(Integer.parseInt(args[2]));
+                    fm.printAll();
                     break;
 
-                case "add":
-                    if (args.length != 9 && args.length != 8)
-                        throw new IllegalArgumentException("Arguments ist Falsh!");
 
-                    if (args[2].equals("pkw")) {
-                        Pkw pkw = new Pkw(Integer.parseInt(args[3]), args[4], args[5], Integer.parseInt(args[6]), Double.parseDouble(args[7]), Integer.parseInt(args[8]));
-                        fm.add(pkw);
-                    } else if (args[2].equals("lkw")) {
-                        Lkw lkw = new Lkw(Integer.parseInt(args[3]), args[4], args[5], Integer.parseInt(args[6]), Double.parseDouble(args[7]));
-                        fm.add(lkw);
+//----------------------------------------------------------------------
+                case "add":
+
+                    switch (args[2]) {//add lkw 3 MAN "TGX 6X2" 2014 56763
+                        case "pkw":
+                            f = new Pkw(args[3], args[4], args[5], args[6], args[7], args[8]);
+                            fm.add(f);
+                            break;
+                        case "lkw":
+                            f = new Lkw(args[3], args[4], args[5], args[6], args[7]);
+                            fm.add(f);
+                            break;
+                        default:
+                            System.err.println("Argument is missing or wrong");
                     }
                     break;
+
+//----------------------------------------------------------------------
                 case "del":
-                    if (args.length != 3) throw new IllegalArgumentException("Arguments ist Falsh!");
                     fm.delete(Integer.parseInt(args[2]));
                     break;
+
+//----------------------------------------------------------------------
                 case "count":
-                    if (args[2].equals("pkw")) System.out.println(fm.sizeOfPkw());
-                    else if (args[2] == "lkw") System.out.println(fm.sizeOfLkw());
+                    if (args.length == 2) {
+                        System.out.println(fm.size());
+                        break;
+                    }
+                    switch (args[2]) {
+                        case "pkw":
+                            System.out.println(fm.sizeOfPkw());
+                            break;
+                        case "lkw":
+                            System.out.println(fm.sizeOfLkw());
+                            break;
+                    }
                     break;
 
-                case "meanprice"://Durchschnittspreis aller Fahrzeuge berechnen
-                    if (args.length != 2)
-                        throw new IllegalArgumentException("Arguments ist Falsh!");
+
+//----------------------------------------------------------------------
+                case "meanprice":
                     System.out.println(fm.priceAvg());
                     break;
 
-                case "oldest": //Ältest(e) Fahrzeug(e) suchen
-                    if (args.length != 2)
-                        throw new IllegalArgumentException("Arguments ist Falsh!");
-                    System.out.println(fm.getOldestFahrzeugId());
+
+//----------------------------------------------------------------------
+                case "oldest":
+                    for (int i : fm.getOldestFahrzeugId())
+                        System.out.println("Id: " + i);
                     break;
+
+
             }
-        } catch (IndexOutOfBoundsException e) {
-            System.err.println("Parameter Fehlt");
+
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
+            System.err.println("Error: Parameter ungueltig.");
+            e.printStackTrace();
         }
+
     }
 }

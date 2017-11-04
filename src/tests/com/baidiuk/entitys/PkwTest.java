@@ -12,8 +12,8 @@ public class PkwTest {
 
     @Before
     public void setUp() throws Exception {
-        pkw = new Pkw(1, "PkwTest", "modelTest", 1999, 1000, 2017);
-        pkw1 = new Pkw(1, "PkwTest", "modelTest", 2016, 1000, 2016);
+        pkw = new Pkw("1", "PkwTest", "modelTest", "1999", "1000", "2017");
+        pkw1 = new Pkw("1", "PkwTest", "modelTest", "2016", "1000", "2016");
     }
 
     @Test

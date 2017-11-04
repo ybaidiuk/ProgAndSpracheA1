@@ -11,8 +11,8 @@ public class LkwTest {
 
     @Before
     public void setUp() throws Exception {
-        lkw = new Lkw(1, "LkwTest", "modelTest", 1999, 1000);
-        lkw1 = new Lkw(1, "LkwTest", "modelTest", 2015, 1000);
+        lkw = new Lkw("1", "LkwTest", "modelTest", "1999", "1000");
+        lkw1 = new Lkw("1", "LkwTest", "modelTest", "2015", "1000");
     }
 
     @Test

@@ -3,7 +3,6 @@ package com.baidiuk.entitys;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.*;
 
@@ -13,8 +12,8 @@ public class FahrzeugTest {
 
     @Before
     public void setUp() throws Exception {
-        fahrzeug1 = new Lkw(1, "testFar", "testFarModel", 1992, 100.888);
-        fahrzeug2 = new Lkw(2, "testFar2", "testFarModel2", 2000, 100);
+        fahrzeug1 = new Lkw("1", "testFar", "testFarModel", "1992", "100.888");
+        fahrzeug2 = new Lkw("2", "testFar2", "testFarModel2", "2000", "100");
     }
 
     @Test
