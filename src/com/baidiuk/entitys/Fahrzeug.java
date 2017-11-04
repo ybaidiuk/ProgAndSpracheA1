@@ -12,97 +12,97 @@ import java.util.Calendar;
 
 public abstract class Fahrzeug implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    public static DecimalFormat df = getDecimalFormat();
-    public static int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-    private int id;
-    private String marke;
-    private String modell;
-    private int baujahr;
-    private double grundpreis;
+  private static final long serialVersionUID = 1L;
+  public static DecimalFormat df = getDecimalFormat();
+  public static int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+  private int id;
+  private String marke;
+  private String modell;
+  private int baujahr;
+  private double grundpreis;
 
-    public Fahrzeug(String id, String marke, String modell, String baujahr, String grundpreis) throws Exception {
-        setId(Integer.parseInt(id));
-        setMarke(marke);
-        setModell(modell);
-        setBaujahr(Integer.parseInt(baujahr));
-        setGrundpreis(Double.parseDouble(grundpreis));
-    }
+  public Fahrzeug(String id, String marke, String modell, String baujahr, String grundpreis) throws Exception {
+    setId(Integer.parseInt(id));
+    setMarke(marke);
+    setModell(modell);
+    setBaujahr(Integer.parseInt(baujahr));
+    setGrundpreis(Double.parseDouble(grundpreis));
+  }
 
-    abstract double getRabatt();
+  abstract double getRabatt();
 
-    abstract public String toString();
+  abstract public String toString();
 
-    public int getId() {
-        return id;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public String getMarke() {
-        return marke;
-    }
+  public String getMarke() {
+    return marke;
+  }
 
-    public void setMarke(String marke) {
-        this.marke = marke;
-    }
+  public void setMarke(String marke) {
+    this.marke = marke;
+  }
 
-    public String getModell() {
-        return modell;
-    }
+  public String getModell() {
+    return modell;
+  }
 
-    public void setModell(String modell) {
-        this.modell = modell;
-    }
+  public void setModell(String modell) {
+    this.modell = modell;
+  }
 
-    public int getBaujahr() {
-        return baujahr;
-    }
+  public int getBaujahr() {
+    return baujahr;
+  }
 
-    public void setBaujahr(int baujahr) throws Exception {
-        if (baujahr > currentYear) throw new Exception("Error: Baujahr ungueltig.");
-        this.baujahr = baujahr;
-    }
+  public void setBaujahr(int baujahr) throws Exception {
+    if (baujahr > currentYear) throw new Exception("Error: Baujahr ungueltig.");
+    this.baujahr = baujahr;
+  }
 
-    public double getGrundpreis() {
-        return grundpreis;
-    }
+  public double getGrundpreis() {
+    return grundpreis;
+  }
 
-    public void setGrundpreis(double grundpreis) throws Exception {
-        if (grundpreis <= 0) throw new Exception("Error: Grundpreis ungueltig.");
-        this.grundpreis = grundpreis;
-    }
+  public void setGrundpreis(double grundpreis) throws Exception {
+    if (grundpreis <= 0) throw new Exception("Error: Grundpreis ungueltig.");
+    this.grundpreis = grundpreis;
+  }
 
-    public int getAlter() {
-        return currentYear - baujahr;
-    }
+  public int getAlter() {
+    return currentYear - baujahr;
+  }
 
-    double getPreis() {
-        return getGrundpreis() - getRabatt();
-    }
+  double getPreis() {
+    return getGrundpreis() - getRabatt();
+  }
 
 
-    public static DecimalFormat getDecimalFormat() {
-        DecimalFormatSymbols dfs = DecimalFormatSymbols.getInstance();
-        dfs.setDecimalSeparator('.');
-        return new DecimalFormat("0.00", dfs);
-    }
+  public static DecimalFormat getDecimalFormat() {
+    DecimalFormatSymbols dfs = DecimalFormatSymbols.getInstance();
+    dfs.setDecimalSeparator('.');
+    return new DecimalFormat("0.00", dfs);
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Fahrzeug)) return false;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Fahrzeug)) return false;
 
-        Fahrzeug fahrzeug = (Fahrzeug) o;
+    Fahrzeug fahrzeug = (Fahrzeug) o;
 
-        return id == fahrzeug.id;
-    }
+    return id == fahrzeug.id;
+  }
 
-    @Override
-    public int hashCode() {
-        return id;
-    }
+  @Override
+  public int hashCode() {
+    return id;
+  }
 
 }
