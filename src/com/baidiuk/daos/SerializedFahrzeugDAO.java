@@ -13,82 +13,79 @@ import java.util.List;
 
 public class SerializedFahrzeugDAO implements FahrzeugDAO {
   private String filePath;
-  private List<Fahrzeug> fahrzeugSet;
+  private List<Fahrzeug> fList;
 
   public SerializedFahrzeugDAO(String filePath) {
     this.filePath = filePath;
-    restoreData();
+    restore();
   }
 
-  private void restoreData() {
+  private void restore() {
     File file = new File(filePath);
     if (file.exists())
       try (FileInputStream fileInputStream = new FileInputStream(filePath);
            ObjectInputStream os = new ObjectInputStream(fileInputStream)) {
 
-        fahrzeugSet = (ArrayList<Fahrzeug>) os.readObject();
+        fList = (ArrayList<Fahrzeug>) os.readObject();
       } catch (Exception e) {
-        System.err.println("Fehler bei Deserialisierung:");
+        System.err.println("Fehler bei Deserialisierung");
         e.printStackTrace();
         System.exit(1);
       }
     else {
-      fahrzeugSet = new ArrayList<>();
+      fList = new ArrayList<>();
     }
   }
 
-  private void saveData() {
+  private void save() {
     try (FileOutputStream fileOutputStream = new FileOutputStream(filePath);
          ObjectOutputStream os = new ObjectOutputStream(fileOutputStream)) {
 
-      File outFile = new File(filePath);
-      if (outFile.getParentFile() != null)
-        outFile.getParentFile().mkdirs();
-      os.writeObject(fahrzeugSet);
+      os.writeObject(fList);
     } catch (Exception e) {
-      System.err.println("Fehler bei Serialisierung:");
+      System.err.println("Fehler bei Serialisierung");
       e.printStackTrace();
       System.exit(1);
     }
   }
 
   @Override
-  public List<Fahrzeug> getFahrzeugList() {
-    return fahrzeugSet;
+  public List<Fahrzeug> getList() {
+    return fList;
   }
 
   @Override
-  public Fahrzeug getFahrzeugbyId(int id) {
-    for (Fahrzeug fahrzeug : fahrzeugSet)
+  public Fahrzeug get(int id) {
+    for (Fahrzeug fahrzeug : fList)
       if (fahrzeug.getId() == id)
         return fahrzeug;
     return null;
   }
 
   @Override
-  public void speichereFahrzeug(Fahrzeug fahrzeug) throws Exception {
-    if (fahrzeugSet.contains(fahrzeug))
+  public void save(Fahrzeug fahrzeug) throws Exception {
+    if (fList.contains(fahrzeug))
       throw new Exception("Error: Fahrzeug bereits vorhanden. (id=<" + fahrzeug.getId() + ">)");
-    fahrzeugSet.add(fahrzeug);
-    saveData();
+    fList.add(fahrzeug);
+    save();
   }
 
   @Override
-  public void loescheFahrzeug(int id) throws Exception {
+  public void remove(int id) throws Exception {
     Fahrzeug fahrzeug = null;
-    for (Fahrzeug f : fahrzeugSet)
+    for (Fahrzeug f : fList)
       if (f.getId() == id)
         fahrzeug = f;
     if (fahrzeug == null) {
       throw new Exception("Error: Fahrzeug nicht vorhanden. (id=" + id + ")");
     }
-    fahrzeugSet.remove(fahrzeug);
-    saveData();
+    fList.remove(fahrzeug);
+    save();
   }
 
   @Override
   public void clear() {
-    fahrzeugSet.clear();
-    saveData();
+    fList.clear();
+    save();
   }
 }

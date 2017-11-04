@@ -28,7 +28,7 @@ public class FahrzeugManagement {
    * Alle Daten aller Fahrzeuge bereitstellen
    */
   public void show() {
-    List<Fahrzeug> fahrzeugSet = dao.getFahrzeugList();
+    List<Fahrzeug> fahrzeugSet = dao.getList();
     for (Fahrzeug f : fahrzeugSet) System.out.println(f);
 
   }
@@ -37,7 +37,7 @@ public class FahrzeugManagement {
    * Alle Daten eines Fahrzeugs bereitstellen
    */
   public void print(int i) throws Exception {
-    System.out.println(dao.getFahrzeugbyId(i));
+    System.out.println(dao.get(i));
   }
 
   /**
@@ -45,7 +45,7 @@ public class FahrzeugManagement {
    */
   public void add(Fahrzeug f) {
     try {
-      dao.speichereFahrzeug(f);
+      dao.save(f);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -55,14 +55,14 @@ public class FahrzeugManagement {
    * Bestehendes Fahrzeug löschen
    */
   public void delete(int i) throws Exception {
-    dao.loescheFahrzeug(i);
+    dao.remove(i);
   }
 
   /**
    * Gesamtzahl aller Fahrzeuge ermitteln
    */
   public int count() {
-    return dao.getFahrzeugList().size();
+    return dao.getList().size();
   }
 
   /**
@@ -70,7 +70,7 @@ public class FahrzeugManagement {
    */
   public int countPkw() {
     int counter = 0;
-    for (Fahrzeug f : dao.getFahrzeugList())
+    for (Fahrzeug f : dao.getList())
       if (f instanceof Pkw) counter++;
     return counter;
   }
@@ -80,7 +80,7 @@ public class FahrzeugManagement {
    */
   public int countLkw() {
     int counter = 0;
-    for (Fahrzeug f : dao.getFahrzeugList())
+    for (Fahrzeug f : dao.getList())
       if (f instanceof Lkw) counter++;
     return counter;
   }
@@ -91,9 +91,9 @@ public class FahrzeugManagement {
   public String meanprice() {
     double meanprice;
     double counter = 0;
-    for (Fahrzeug f : dao.getFahrzeugList())
+    for (Fahrzeug f : dao.getList())
       counter += f.getPreis();
-    meanprice = counter / dao.getFahrzeugList().size();
+    meanprice = counter / dao.getList().size();
     return Fahrzeug.df.format(meanprice);
   }
 
@@ -101,14 +101,14 @@ public class FahrzeugManagement {
    * Id(s) des(r) ältesten Fahrzeugs(e) ermitteln
    */
   public List<Integer> oldest() {
-    if (dao.getFahrzeugList().isEmpty()) {
+    if (dao.getList().isEmpty()) {
       System.err.println("You have no Fahrzeug!");
       System.exit(1);
     }
     List<Integer> retList = new ArrayList<>();
-    int ageOfOldest = dao.getFahrzeugList().stream().sorted(Comparator.comparingInt(Fahrzeug::getAlter).reversed()).findFirst().get().getAlter();
+    int ageOfOldest = dao.getList().stream().sorted(Comparator.comparingInt(Fahrzeug::getAlter).reversed()).findFirst().get().getAlter();
 
-    for (Fahrzeug f : dao.getFahrzeugList()) {
+    for (Fahrzeug f : dao.getList()) {
       if (f.getAlter() == ageOfOldest)
         retList.add(f.getId());
     }
@@ -122,7 +122,7 @@ public class FahrzeugManagement {
 
   @Deprecated
   public List<Fahrzeug> getAll() {// only for JunitTest
-    return dao.getFahrzeugList();
+    return dao.getList();
   }
 
 }

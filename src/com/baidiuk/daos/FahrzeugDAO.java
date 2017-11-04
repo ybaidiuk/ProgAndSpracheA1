@@ -11,13 +11,13 @@ import java.util.List;
 
 public interface FahrzeugDAO {
 
-  List<Fahrzeug> getFahrzeugList();
+  List<Fahrzeug> getList();
 
-  Fahrzeug getFahrzeugbyId(int id);
+  Fahrzeug get(int id);
 
-  void speichereFahrzeug(Fahrzeug fahrzeug) throws Exception;
+  void save(Fahrzeug fahrzeug) throws Exception;
 
-  void loescheFahrzeug(int id) throws Exception;
+  void remove(int id) throws Exception;
 
   @Deprecated
   void clear();
