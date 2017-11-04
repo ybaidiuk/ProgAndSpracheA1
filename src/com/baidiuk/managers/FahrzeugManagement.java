@@ -6,8 +6,6 @@ import com.baidiuk.entitys.Fahrzeug;
 import com.baidiuk.entitys.Lkw;
 import com.baidiuk.entitys.Pkw;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
