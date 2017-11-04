@@ -79,7 +79,7 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
     for (Fahrzeug f : fahrzeugSet)
       if (f.getId() == id)
         fahrzeug = f;
-    if (fahrzeug == null){
+    if (fahrzeug == null) {
       throw new Exception("Error: Fahrzeug nicht vorhanden. (id=" + id + ")");
     }
     fahrzeugSet.remove(fahrzeug);
