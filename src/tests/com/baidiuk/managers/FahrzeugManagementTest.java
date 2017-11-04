@@ -66,7 +66,7 @@ public class FahrzeugManagementTest {
     public void priceAvg() throws Exception {
         fm.show();
         System.out.println(fm.meanprice());
-        assertEquals("125.125", fm.meanprice());
+        assertEquals("125.12", fm.meanprice());
     }
 
     @Test

@@ -54,12 +54,8 @@ public class FahrzeugManagement {
   /**
    * Bestehendes Fahrzeug löschen
    */
-  public void delete(int i) {
-    try {
-      dao.loescheFahrzeug(i);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+  public void delete(int i) throws Exception {
+    dao.loescheFahrzeug(i);
   }
 
   /**
