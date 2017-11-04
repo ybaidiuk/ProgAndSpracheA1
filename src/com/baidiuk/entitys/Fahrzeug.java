@@ -79,7 +79,7 @@ public abstract class Fahrzeug implements Serializable {
     return currentYear - baujahr;
   }
 
-  double getPreis() {
+  public double getPreis() {
     return getGrundpreis() - getRabatt();
   }
 

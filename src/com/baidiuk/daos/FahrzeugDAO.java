@@ -2,7 +2,7 @@ package com.baidiuk.daos;
 
 import com.baidiuk.entitys.Fahrzeug;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * @author Baidiuk Yevhen
@@ -11,7 +11,7 @@ import java.util.Set;
 
 public interface FahrzeugDAO {
 
-  Set<Fahrzeug> getFahrzeugList();
+  List<Fahrzeug> getFahrzeugList();
 
   Fahrzeug getFahrzeugbyId(int id);
 

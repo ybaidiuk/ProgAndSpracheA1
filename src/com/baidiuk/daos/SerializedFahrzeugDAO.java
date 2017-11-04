@@ -3,8 +3,8 @@ package com.baidiuk.daos;
 import com.baidiuk.entitys.Fahrzeug;
 
 import java.io.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Baidiuk Yevhen
@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class SerializedFahrzeugDAO implements FahrzeugDAO {
   private String filePath;
-  private Set<Fahrzeug> fahrzeugSet;
+  private List<Fahrzeug> fahrzeugSet;
 
   public SerializedFahrzeugDAO(String filePath) {
     this.filePath = filePath;
@@ -26,14 +26,14 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
       try (FileInputStream fileInputStream = new FileInputStream(filePath);
            ObjectInputStream os = new ObjectInputStream(fileInputStream)) {
 
-        fahrzeugSet = (HashSet<Fahrzeug>) os.readObject();
+        fahrzeugSet = (ArrayList<Fahrzeug>) os.readObject();
       } catch (Exception e) {
         System.err.println("Fehler bei Deserialisierung:");
         e.printStackTrace();
         System.exit(1);
       }
     else {
-      fahrzeugSet = new HashSet<>();
+      fahrzeugSet = new ArrayList<>();
     }
   }
 
@@ -53,7 +53,7 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
   }
 
   @Override
-  public Set<Fahrzeug> getFahrzeugList() {
+  public List<Fahrzeug> getFahrzeugList() {
     return fahrzeugSet;
   }
 
@@ -79,8 +79,10 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
     for (Fahrzeug f : fahrzeugSet)
       if (f.getId() == id)
         fahrzeug = f;
-    if (fahrzeug == null)
-      throw new Exception("Error: Fahrzeug nicht vorhanden. (id=" + id + ")");
+    if (fahrzeug == null){
+      System.err.println("Error: Fahrzeug nicht vorhanden. (id=" + id + ")");
+      throw new Exception();
+    }
     fahrzeugSet.remove(fahrzeug);
     saveData();
   }

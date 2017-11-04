@@ -9,7 +9,6 @@ import com.baidiuk.entitys.Pkw;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author Baidiuk Yevhen
@@ -29,7 +28,7 @@ public class FahrzeugManagement {
    * Alle Daten aller Fahrzeuge bereitstellen
    */
   public void show() {
-    Set<Fahrzeug> fahrzeugSet = dao.getFahrzeugList();
+    List<Fahrzeug> fahrzeugSet = dao.getFahrzeugList();
     for (Fahrzeug f : fahrzeugSet) System.out.println(f);
 
   }
@@ -97,7 +96,7 @@ public class FahrzeugManagement {
     double meanprice;
     double counter = 0;
     for (Fahrzeug f : dao.getFahrzeugList())
-      counter += f.getGrundpreis();
+      counter += f.getPreis();
     meanprice = counter / dao.getFahrzeugList().size();
     return Fahrzeug.df.format(meanprice);
   }
@@ -126,7 +125,7 @@ public class FahrzeugManagement {
   }
 
   @Deprecated
-  public Set<Fahrzeug> getAll() {// only for JunitTest
+  public List<Fahrzeug> getAll() {// only for JunitTest
     return dao.getFahrzeugList();
   }
 
