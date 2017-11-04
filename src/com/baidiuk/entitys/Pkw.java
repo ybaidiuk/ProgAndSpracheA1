@@ -10,9 +10,9 @@ public class Pkw extends Fahrzeug {
   private static final long serialVersionUID = 1L;
   private int servicejahr;
 
-  public Pkw(String id, String marke, String modell, String baujahr, String grundpreis, String servicejahr) throws Exception {
+  public Pkw(int id, String marke, String modell, int baujahr, double grundpreis, int servicejahr) throws Exception {
     super(id, marke, modell, baujahr, grundpreis);
-    setServicejahr(Integer.parseInt(servicejahr));
+    setServicejahr(servicejahr);
   }
 
   public int getServicejahr() {
@@ -35,13 +35,13 @@ public class Pkw extends Fahrzeug {
 
   @Override
   public String toString() {
-    return "Typ:           PKW \n" +
-        "Id:            " + getId() + "\n" +
-        "Marke:         " + getMarke() + '\n' +
-        "Modell:        " + getModell() + '\n' +
-        "Baujahr:       " + getBaujahr() + "\n" +
-        "Grundpreis:    " + df.format(getGrundpreis()) + "\n" +
-        "Servicejahr:   " + getServicejahr() + "\n" +
-        "Price:         " + getPreis() + "\n";
+    return "Typ:         PKW \n" +
+        "Id:          " + getId() + "\n" +
+        "Marke:       " + getMarke() + '\n' +
+        "Modell:      " + getModell() + '\n' +
+        "Baujahr:     " + getBaujahr() + "\n" +
+        "Grundpreis:  " + df.format(getGrundpreis()) + "\n" +
+        "Servicejahr: " + getServicejahr() + "\n" +
+        "Price:       " + getPreis() + "\n";
   }
 }

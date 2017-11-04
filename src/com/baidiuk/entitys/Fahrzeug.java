@@ -21,12 +21,12 @@ public abstract class Fahrzeug implements Serializable {
   private int baujahr;
   private double grundpreis;
 
-  public Fahrzeug(String id, String marke, String modell, String baujahr, String grundpreis) throws Exception {
-    setId(Integer.parseInt(id));
+  public Fahrzeug(int id, String marke, String modell, int baujahr, double grundpreis) throws Exception {
+    setId(id);
     setMarke(marke);
     setModell(modell);
-    setBaujahr(Integer.parseInt(baujahr));
-    setGrundpreis(Double.parseDouble(grundpreis));
+    setBaujahr(baujahr);
+    setGrundpreis(grundpreis);
   }
 
   abstract double getRabatt();

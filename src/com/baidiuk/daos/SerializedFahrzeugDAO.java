@@ -33,7 +33,6 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
         System.exit(1);
       }
     else {
-      System.out.println("file<" + filePath + "> was not founded, will be create new one");
       fahrzeugSet = new HashSet<>();
     }
   }

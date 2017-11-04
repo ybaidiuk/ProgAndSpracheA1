@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author <your-name-here>
- * Matrikelnummer:
+ * @author Baidiuk Yevhen
+ * Matrikelnummer: 1368277
  */
 
 
@@ -39,7 +39,7 @@ public class FahrzeugManagement {
   /**
    * Alle Daten eines Fahrzeugs bereitstellen
    */
-  public void print(int i) {
+  public void print(int i) throws Exception {
     System.out.println(dao.getFahrzeugbyId(i));
   }
 

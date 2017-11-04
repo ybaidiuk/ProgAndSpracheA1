@@ -22,8 +22,8 @@ public class SerializedFahrzeugDAOTest {
     public void setUp() throws Exception {
         dao.clear();
 
-        fahrzeug1 = new Lkw("1", "testSer", "testSerModel", "1992", "100");
-        fahrzeug2 = new Lkw("2", "testSer2", "testSerModel2", "1992", "100");
+        fahrzeug1 = new Lkw(1, "testSer", "testSerModel", 1992, 100);
+        fahrzeug2 = new Lkw(2, "testSer2", "testSerModel2", 1992, 100);
         dao.speichereFahrzeug(fahrzeug1);
         dao.speichereFahrzeug(fahrzeug2);
     }

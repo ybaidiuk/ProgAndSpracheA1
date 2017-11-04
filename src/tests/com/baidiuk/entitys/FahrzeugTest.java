@@ -12,8 +12,8 @@ public class FahrzeugTest {
 
     @Before
     public void setUp() throws Exception {
-        fahrzeug1 = new Lkw("1", "testFar", "testFarModel", "1992", "100.888");
-        fahrzeug2 = new Lkw("2", "testFar2", "testFarModel2", "2000", "100");
+        fahrzeug1 = new Lkw(1, "testFar", "testFarModel", 1992, 100.888);
+        fahrzeug2 = new Lkw(2, "testFar2", "testFarModel2", 2000, 100);
     }
 
     @Test
@@ -29,9 +29,10 @@ public class FahrzeugTest {
 
     @Test
     public void getGrundpreis() throws Exception {
-
-        assertTrue(fahrzeug1.toString().contains("Grundpreis: 100.89"));
-        assertTrue(fahrzeug2.toString().contains("Grundpreis: 100.00"));
+        System.out.println(fahrzeug1.toString());
+        System.out.println(fahrzeug2.toString());
+        assertTrue(fahrzeug1.toString().contains("Grundpreis:  100.89"));
+        assertTrue(fahrzeug2.toString().contains("Grundpreis:  100.00"));
     }
 
     @Test(expected = Exception.class)

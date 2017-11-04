@@ -31,11 +31,11 @@ public class FahrzeugClient {
 
           switch (args[2]) {
             case "pkw":
-              f = new Pkw(args[3], args[4], args[5], args[6], args[7], args[8]);
+              f = new Pkw(Integer.parseInt(args[3]), args[4], args[5], Integer.parseInt(args[6]), Double.parseDouble(args[7]), Integer.parseInt(args[8]));
               fm.add(f);
               break;
             case "lkw":
-              f = new Lkw(args[3], args[4], args[5], args[6], args[7]);
+              f = new Lkw(Integer.parseInt(args[3]), args[4], args[5], Integer.parseInt(args[6]), Double.parseDouble(args[7]));
               fm.add(f);
               break;
             default:

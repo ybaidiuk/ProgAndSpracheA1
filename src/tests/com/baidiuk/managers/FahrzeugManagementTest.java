@@ -22,8 +22,8 @@ public class FahrzeugManagementTest {
     @Before
     public void setUp() throws Exception {
         fm.clear();
-        fahrzeug1 = new Lkw("1", "testManag", "testManagModel", "1992", "100.10");
-        fahrzeug2 = new Pkw("2", "testManag2Lkw", "testManagModel2", "2000", "200.20", "2002");
+        fahrzeug1 = new Lkw(1, "testManag", "testManagModel", 1992, 100.10);
+        fahrzeug2 = new Pkw(2, "testManag2Lkw", "testManagModel2", 2000, 200.20, 2002);
 
         fm.add(fahrzeug1);
         fm.add(fahrzeug2);
