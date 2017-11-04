@@ -54,23 +54,23 @@ public class FahrzeugManagementTest {
 
     @Test
     public void sizeOfPkw() throws Exception {
-        assertEquals(1, fm.sizeOfPkw());
+        assertEquals(1, fm.countPkw());
     }
 
     @Test
     public void sizeOfLkw() throws Exception {
-        assertEquals(1, fm.sizeOfLkw());
+        assertEquals(1, fm.countLkw());
     }
 
     @Test
     public void priceAvg() throws Exception {
-        System.out.println(fm.priceAvg());
-        assertEquals("150.15", fm.priceAvg());
+        System.out.println(fm.meanprice());
+        assertEquals("150.15", fm.meanprice());
     }
 
     @Test
     public void getOldestFahrzeugId() throws Exception {
-        assertEquals(new Integer(fahrzeug1.getId()), fm.getOldestFahrzeugId().get(0));
+        assertEquals(new Integer(fahrzeug1.getId()), fm.oldest().get(0));
     }
 
     @Test

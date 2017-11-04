@@ -22,14 +22,14 @@ public class FahrzeugClient {
 
 //----------------------------------------------------------------------
         case "show":
-          fm.printAll();
+          fm.show();
           break;
 
 
 //----------------------------------------------------------------------
         case "add":
 
-          switch (args[2]) {//add lkw 3 MAN "TGX 6X2" 2014 56763
+          switch (args[2]) {
             case "pkw":
               f = new Pkw(args[3], args[4], args[5], args[6], args[7], args[8]);
               fm.add(f);
@@ -51,15 +51,15 @@ public class FahrzeugClient {
 //----------------------------------------------------------------------
         case "count":
           if (args.length == 2) {
-            System.out.println(fm.size());
+            System.out.println(fm.count());
             break;
           }
           switch (args[2]) {
             case "pkw":
-              System.out.println(fm.sizeOfPkw());
+              System.out.println(fm.countPkw());
               break;
             case "lkw":
-              System.out.println(fm.sizeOfLkw());
+              System.out.println(fm.countLkw());
               break;
           }
           break;
@@ -67,20 +67,20 @@ public class FahrzeugClient {
 
 //----------------------------------------------------------------------
         case "meanprice":
-          System.out.println(fm.priceAvg());
+          System.out.println(fm.meanprice());
           break;
 
 
 //----------------------------------------------------------------------
         case "oldest":
-          for (int i : fm.getOldestFahrzeugId())
+          for (int i : fm.oldest())
             System.out.println("Id: " + i);
           break;
-
+        default:
+          throw new Exception();
 
       }
-
-    } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
+    } catch (Exception e) {
       System.err.println("Error: Parameter ungueltig.");
       e.printStackTrace();
     }

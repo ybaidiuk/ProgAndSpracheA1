@@ -30,7 +30,7 @@ public class FahrzeugManagement {
   /**
    * Alle Daten aller Fahrzeuge bereitstellen
    */
-  public void printAll() {
+  public void show() {
     Set<Fahrzeug> fahrzeugSet = dao.getFahrzeugList();
     for (Fahrzeug f : fahrzeugSet) System.out.println(f);
 
@@ -68,14 +68,14 @@ public class FahrzeugManagement {
   /**
    * Gesamtzahl aller Fahrzeuge ermitteln
    */
-  public int size() {
+  public int count() {
     return dao.getFahrzeugList().size();
   }
 
   /**
    * Gesamtzahl aller PKWs ermitteln
    */
-  public int sizeOfPkw() {
+  public int countPkw() {
     int counter = 0;
     for (Fahrzeug f : dao.getFahrzeugList())
       if (f instanceof Pkw) counter++;
@@ -85,7 +85,7 @@ public class FahrzeugManagement {
   /**
    * Gesamtzahl aller LKWs ermitteln
    */
-  public int sizeOfLkw() {
+  public int countLkw() {
     int counter = 0;
     for (Fahrzeug f : dao.getFahrzeugList())
       if (f instanceof Lkw) counter++;
@@ -95,7 +95,7 @@ public class FahrzeugManagement {
   /**
    * Durchschnittspreis aller Fahrzeuge ermitteln
    */
-  public String priceAvg() {
+  public String meanprice() {
     double meanprice;
     double counter = 0;
     for (Fahrzeug f : dao.getFahrzeugList())
@@ -107,7 +107,7 @@ public class FahrzeugManagement {
   /**
    * Id(s) des(r) ältesten Fahrzeugs(e) ermitteln
    */
-  public List<Integer> getOldestFahrzeugId() {
+  public List<Integer> oldest() {
     if (dao.getFahrzeugList().isEmpty()) {
       System.err.println("You have no Fahrzeug!");
       System.exit(1);
