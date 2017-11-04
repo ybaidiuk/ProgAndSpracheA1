@@ -14,7 +14,7 @@ public abstract class Fahrzeug implements Serializable {
 
   private static final long serialVersionUID = 1L;
   public static DecimalFormat df = getDecimalFormat();
-  public static int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+  static int currentYear = Calendar.getInstance().get(Calendar.YEAR);
   private int id;
   private String marke;
   private String modell;

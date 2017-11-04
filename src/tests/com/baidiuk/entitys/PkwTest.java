@@ -23,14 +23,14 @@ public class PkwTest {
 
     @Test(expected = Exception.class)
     public void setServicejah1Exep() throws Exception {
-        pkw.setServicejahr(1000);
+        pkw.setServiceYear(1000);
 
 
     }
 
     @Test(expected = Exception.class)
     public void setServicejahr2Exep() throws Exception {
-        pkw.setServicejahr(4000);
+        pkw.setServiceYear(4000);
 
     }
 

@@ -8,26 +8,26 @@ package com.baidiuk.entitys;
 public class Pkw extends Fahrzeug {
 
   private static final long serialVersionUID = 1L;
-  private int servicejahr;
+  private int serviceYear;
 
-  public Pkw(int id, String marke, String modell, int baujahr, double grundpreis, int servicejahr) throws Exception {
+  public Pkw(int id, String marke, String modell, int baujahr, double grundpreis, int serviceYear) throws Exception {
     super(id, marke, modell, baujahr, grundpreis);
-    setServicejahr(servicejahr);
+    setServiceYear(serviceYear);
   }
 
-  public int getServicejahr() {
-    return servicejahr;
+  public int getServiceYear() {
+    return serviceYear;
   }
 
-  public void setServicejahr(int servicejahr) throws Exception {
-    if (servicejahr < getBaujahr() || servicejahr > currentYear)
+  public void setServiceYear(int serviceYear) throws Exception {
+    if (serviceYear < getBaujahr() || serviceYear > currentYear)
       throw new Exception("Error: ServiceJahr ungueltig.");
-    this.servicejahr = servicejahr;
+    this.serviceYear = serviceYear;
   }
 
   @Override
   public double getRabatt() {
-    double rabbatProzent = getAlter() * 0.05 + (currentYear - servicejahr) * 0.02;
+    double rabbatProzent = getAlter() * 0.05 + (currentYear - serviceYear) * 0.02;
     double rabatt = getGrundpreis() * rabbatProzent;
     double maxRabatt = getGrundpreis() * 0.15;
     return rabatt > maxRabatt ? maxRabatt : rabatt;
@@ -41,7 +41,7 @@ public class Pkw extends Fahrzeug {
         "Modell:      " + getModell() + '\n' +
         "Baujahr:     " + getBaujahr() + "\n" +
         "Grundpreis:  " + df.format(getGrundpreis()) + "\n" +
-        "Servicejahr: " + getServicejahr() + "\n" +
+        "Servicejahr: " + getServiceYear() + "\n" +
         "Preis:       " + df.format(getPreis()) + "\n";
   }
 }
